@@ -50,6 +50,10 @@ header { position: relative; display: flex; flex-direction: column; gap: 18px; p
 header::before { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.10) 45%, rgba(174,228,237,0.14) 50%, rgba(255,255,255,0) 62%); pointer-events: none; }
 header::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--teal), var(--mint), transparent); }
 header > * { position: relative; }
+.header-row { display: flex; align-items: center; gap: 32px; }
+.header-text { display: flex; flex-direction: column; gap: 18px; min-width: 0; flex: 1; }
+.avatar { flex: none; width: 168px; height: 168px; border-radius: 50%; object-fit: cover; border: 2px solid var(--teal); box-shadow: 0 0 0 5px rgba(95, 183, 207, 0.18), 0 0 28px rgba(95, 183, 207, 0.35), 0 12px 30px rgba(0,0,0,0.5); background: var(--surface); }
+@media (max-width: 640px) { .header-row { flex-direction: column-reverse; align-items: flex-start; } .avatar { width: 128px; height: 128px; } }
 .lede { font-size: 20px; color: var(--mint); max-width: 62ch; }
 .contact { display: flex; flex-wrap: wrap; gap: 8px 24px; font-family: var(--mono); font-size: 14px; color: var(--muted); }
 .contact span { display: inline-flex; align-items: center; gap: 6px; }
@@ -104,6 +108,8 @@ img { max-width: 100%; }
 <div class="wrap">
 
 <header>
+  <div class="header-row">
+    <div class="header-text">
   <p class="eyebrow">Software engineering intern candidate</p>
   <h1>Praveena Arni</h1>
   <p class="lede">Computer science student at UT Austin, most recently a software engineering intern at NASA Johnson Space Center. Below are my experience and skills, a featured project, and my resume: a hangman engine I built in Java, with its design decisions, costs, and defects worked out.</p>
@@ -112,6 +118,9 @@ img { max-width: 100%; }
     <span>github <a href="https://github.com/praveenaarni">github.com/praveenaarni</a></span>
     <span>linkedin <a href="https://linkedin.com/in/praveenaarni">linkedin.com/in/praveenaarni</a></span>
     <span>Austin, TX · US Citizen</span>
+  </div>
+    </div>
+    <img class="avatar" src="profile.png" alt="Praveena Arni" width="560" height="560">
   </div>
 </header>
 
