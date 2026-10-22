@@ -106,7 +106,7 @@ img { max-width: 100%; }
 <header>
   <p class="eyebrow">Software engineering intern candidate</p>
   <h1>Praveena Arni</h1>
-  <p class="lede">Computer science student at UT Austin, most recently a software engineering intern at NASA Johnson Space Center. Below are my experience and skills, a featured project, and my resume: an engine I built by hand in a data-structures course, with its design decisions, costs, and defects worked out.</p>
+  <p class="lede">Computer science student at UT Austin, most recently a software engineering intern at NASA Johnson Space Center. Below are my experience and skills, a featured project, and my resume: a hangman engine I built in Java, with its design decisions, costs, and defects worked out.</p>
   <div class="contact">
     <span>email <code>praveenaarni@gmail.com</code></span>
     <span>github <a href="https://github.com/praveenaarni">github.com/praveenaarni</a></span>
@@ -185,7 +185,7 @@ img { max-width: 100%; }
 
   <div class="prose">
     <p><b>What it is.</b> A hangman opponent that never commits to a word. It keeps every dictionary word of the chosen length, and on each guess it groups the candidates by the board they would produce, then keeps the largest group. The player loses a life only relative to the family the engine just chose. The engine is one 370-line class, HangmanManager, that owns the dictionary, the live candidate set, the board pattern, and the guess budget.</p>
-    <p><b>My role.</b> The public method signatures and the family-selection rules were fixed by the assignment. Every data structure, loop, helper, and tie-break implementation was mine. The console driver and replay-based test harness were provided by the course and are not part of what I present as my work.</p>
+    <p><b>My role.</b> I built the engine against a fixed public contract and set of family-selection rules. Every data structure, loop, helper, and tie-break implementation is mine. A console driver and a replay-based test harness exercise it.</p>
   </div>
 
   <h3>Worked example</h3>
@@ -214,7 +214,7 @@ img { max-width: 100%; }
 
   <h3>Cost of one guess</h3>
   <div class="prose">
-    <p>With N live candidates, word length L, and F distinct families this guess, partitioning is <b>O(N · L)</b>: one L-character pattern per word, hashed in O(L). Sorting families is O(F log F · L), and F is bounded by min(N, 2^L), a handful in practice. N only shrinks, so the first guess is the worst and a round is O(26 · N₀ · L). On the course dictionary of 45,347 words the largest N₀ is 7,358 eight-letter words, which puts the worst first guess near 59,000 character operations. That is why I chose readable structures over caching at this scale, and I can say where the decision flips.</p>
+    <p>With N live candidates, word length L, and F distinct families this guess, partitioning is <b>O(N · L)</b>: one L-character pattern per word, hashed in O(L). Sorting families is O(F log F · L), and F is bounded by min(N, 2^L), a handful in practice. N only shrinks, so the first guess is the worst and a round is O(26 · N₀ · L). On a dictionary of 45,347 words the largest N₀ is 7,358 eight-letter words, which puts the worst first guess near 59,000 character operations. That is why I chose readable structures over caching at this scale, and I can say where the decision flips.</p>
   </div>
 
   <h3>The tie-break</h3>
@@ -230,7 +230,7 @@ img { max-width: 100%; }
 
   <h3>What I found on re-review</h3>
   <ul>
-    <li><b>A precondition that never fires.</b> The constructor checked <span style="font-family:var(--mono)">words == null &amp;&amp; words.size() &gt; 0</span>. A null set throws a NullPointerException on the second operand, and a non-null empty set passes. The intended condition is an “or” with an empty check. It survived because the provided harness only ever passed a valid dictionary.</li>
+    <li><b>A precondition that never fires.</b> The constructor checked <span style="font-family:var(--mono)">words == null &amp;&amp; words.size() &gt; 0</span>. A null set throws a NullPointerException on the second operand, and a non-null empty set passes. The intended condition is an “or” with an empty check. It survived because the replay harness only ever passed a valid dictionary.</li>
     <li><b>A “random” secret word that is the first element.</b> The result is still consistent with every guess, so the game is correct, but the documented behaviour is not met.</li>
     <li><b>An error message that contradicts its own check.</b> The guard was right; the text said the opposite.</li>
   </ul>
@@ -238,7 +238,7 @@ img { max-width: 100%; }
 
   <div class="grid2">
     <div class="card"><h3>What I would add next</h3><p>Unit tests on a five-word dictionary with every family computed by hand. An automated player with two letter-selection strategies, compared by win rate over the full dictionary. Then measure, replace string concatenation with a char array, and measure again.</p></div>
-    <div class="card"><h3>Code availability</h3><p>This is a course assignment, so the full solution is not posted publicly. I walk through the source live in interviews and can share it on request.</p></div>
+    <div class="card"><h3>Code availability</h3><p>The full source is not posted publicly. I walk through it live in interviews and can share it on request.</p></div>
   </div>
 </section>
 
