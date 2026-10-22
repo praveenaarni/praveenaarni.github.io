@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Praveena Arni Portfolio</title>
+<meta name="description" content="Praveena Arni, computer science student at UT Austin and software engineering intern: experience, skills, resume, and a featured Java project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column on a deep-navy field; brushed-metal panels for the header, cards, and code; teal and mint carry the hierarchy. Dark by design. */
+:root {
+  color-scheme: dark;
+  --bg: #080D1C;
+  --bg-2: #0C1327;
+  --surface: #111A33;
+  --surface-2: #16213F;
+  --ink: #F2FAFC;
+  --mint: #AEE4ED;
+  --teal: #5FB7CF;
+  --indigo: #3C339A;
+  --indigo-soft: #5A50C2;
+  --muted: #9FC7D1;
+  --line: rgba(174, 228, 237, 0.16);
+  --line-strong: rgba(95, 183, 207, 0.45);
+  --code-bg: #070C1A;
+  --code-fg: #E6F4F7;
+  --code-key: #8FD3E6;
+  --code-str: #C9C2FF;
+  --glow: 0 0 24px rgba(95, 183, 207, 0.22);
+  --metal: linear-gradient(135deg, #1B2546 0%, #121B38 32%, #1E2A52 50%, #0F1730 68%, #1A2448 100%);
+  --metal-edge: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(0, 0, 0, 0.55), inset 1px 0 0 rgba(174, 228, 237, 0.08), 0 14px 36px rgba(0, 0, 0, 0.45);
+  --display: 'IBM Plex Serif', Georgia, serif;
+  --body: 'IBM Plex Sans', Arial, sans-serif;
+  --mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+body { background: var(--bg); background-image: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(60, 51, 154, 0.35), transparent 60%), radial-gradient(ellipse 60% 40% at 100% 100%, rgba(95, 183, 207, 0.10), transparent 60%); background-attachment: fixed; color: var(--ink); font-family: var(--body); line-height: 1.55; font-size: 17px; }
+.wrap { max-width: 860px; margin: 0 auto; padding-block: 48px 80px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 56px; }
+h1, h2, h3 { text-wrap: balance; line-height: 1.15; margin: 0; }
+h1 { font-family: var(--display); font-size: clamp(36px, 6vw, 52px); font-weight: 700; background: linear-gradient(100deg, #FFFFFF 0%, var(--mint) 55%, var(--teal) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+h2 { font-family: var(--display); font-size: 30px; font-weight: 700; color: var(--ink); }
+h3 { font-size: 19px; font-weight: 600; color: var(--mint); }
+p { margin: 0; }
+a { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--mint); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); text-shadow: 0 0 12px rgba(95, 183, 207, 0.45); }
+header { position: relative; display: flex; flex-direction: column; gap: 18px; padding: 32px 32px 30px; border-radius: 14px; background: var(--metal); box-shadow: var(--metal-edge), var(--glow); border: 1px solid var(--line-strong); overflow: hidden; }
+header::before { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.10) 45%, rgba(174,228,237,0.14) 50%, rgba(255,255,255,0) 62%); pointer-events: none; }
+header::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--teal), var(--mint), transparent); }
+header > * { position: relative; }
+.lede { font-size: 20px; color: var(--mint); max-width: 62ch; }
+.contact { display: flex; flex-wrap: wrap; gap: 8px 24px; font-family: var(--mono); font-size: 14px; color: var(--muted); }
+.contact span { display: inline-flex; align-items: center; gap: 6px; }
+.contact code { font-family: inherit; color: var(--ink); user-select: all; }
+section { display: flex; flex-direction: column; gap: 22px; }
+.section-head { display: flex; flex-direction: column; gap: 6px; padding-bottom: 12px; border-bottom: 1px solid var(--line); background: linear-gradient(90deg, var(--line-strong), transparent 40%) bottom / 100% 1px no-repeat; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { font-family: var(--mono); font-size: 12.5px; padding: 4px 11px; border: 1px solid rgba(90, 80, 194, 0.55); border-radius: 999px; color: var(--mint); background: linear-gradient(180deg, rgba(60, 51, 154, 0.55), rgba(60, 51, 154, 0.25)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.12); }
+.pill.strong { border-color: var(--teal); color: var(--ink); background: linear-gradient(180deg, rgba(95, 183, 207, 0.45), rgba(95, 183, 207, 0.18)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 0 14px rgba(95, 183, 207, 0.25); }
+.prose { display: flex; flex-direction: column; gap: 14px; max-width: 68ch; }
+.prose b { color: var(--mint); }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.card { position: relative; background: var(--metal); border: 1px solid var(--line-strong); border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; min-width: 0; box-shadow: var(--metal-edge); overflow: hidden; }
+.card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(255,255,255,0) 35%, rgba(255,255,255,0.08) 48%, rgba(255,255,255,0) 58%); pointer-events: none; }
+.card > * { position: relative; }
+.card p { color: var(--muted); font-size: 15.5px; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); }
+th, td { text-align: left; padding: 10px 14px; border-top: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); border-top: none; background: linear-gradient(180deg, #1A2448, #121B38); }
+td { color: var(--ink); }
+td:first-child { font-weight: 600; white-space: nowrap; color: var(--mint); }
+.tablewrap { overflow-x: auto; min-width: 0; }
+pre { position: relative; background: var(--code-bg); color: var(--code-fg); font-family: var(--mono); font-size: 14px; line-height: 1.55; padding: 18px 20px; border-radius: 10px; overflow-x: auto; margin: 0; border: 1px solid var(--line-strong); box-shadow: inset 0 1px 0 rgba(174,228,237,0.12), 0 0 0 1px rgba(60,51,154,0.35), var(--glow); }
+pre .k { color: var(--code-key); } pre .s { color: var(--code-str); } pre .c { color: #7F9AA6; }
+.num { font-variant-numeric: tabular-nums; }
+ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+li { padding-left: 2px; }
+li b { color: var(--mint); }
+li::marker { color: var(--teal); }
+.callout { border-left: 3px solid var(--teal); padding: 6px 0 6px 16px; color: var(--muted); font-size: 15.5px; max-width: 68ch; background: linear-gradient(90deg, rgba(95,183,207,0.10), transparent 70%); }
+.role { display: grid; grid-template-columns: 170px 1fr; gap: 6px 24px; border-top: 1px solid var(--line); padding-top: 18px; }
+.role:first-of-type { border-top: none; padding-top: 0; }
+.role .when { font-family: var(--mono); font-size: 13px; color: var(--teal); padding-top: 4px; }
+.role .what { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.role .org { font-weight: 600; color: var(--ink); }
+.role .title { font-size: 15px; color: var(--mint); }
+.role p.sum { font-size: 15.5px; color: var(--muted); max-width: 68ch; }
+@media (max-width: 560px) { .role { grid-template-columns: 1fr; } header { padding: 24px 20px; } }
+.sheet { position: relative; background: var(--metal); border: 1px solid var(--line-strong); border-radius: 12px; padding: 14px; max-width: 100%; box-shadow: var(--metal-edge), var(--glow); }
+.sheet img { display: block; width: 100%; height: auto; max-width: 100%; border-radius: 4px; box-shadow: 0 6px 24px rgba(0,0,0,0.5); }
+footer { font-family: var(--mono); font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 20px; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+<style>
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+body { margin: 0; }
+img { max-width: 100%; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Software engineering intern candidate</p>
+  <h1>Praveena Arni</h1>
+  <p class="lede">Computer science student at UT Austin, most recently a software engineering intern at NASA Johnson Space Center. Below are my experience and skills, a featured project, and my resume: an engine I built by hand in a data-structures course, with its design decisions, costs, and defects worked out.</p>
+  <div class="contact">
+    <span>email <code>praveenaarni@gmail.com</code></span>
+    <span>github <a href="https://github.com/praveenaarni">github.com/praveenaarni</a></span>
+    <span>linkedin <a href="https://linkedin.com/in/praveenaarni">linkedin.com/in/praveenaarni</a></span>
+    <span>Austin, TX · US Citizen</span>
+  </div>
+</header>
+
+
+
+
+<section id="experience">
+  <div class="section-head">
+    <p class="eyebrow">Experience</p>
+    <h2>Where I have worked</h2>
+  </div>
+  <div class="role">
+    <p class="when">May – Aug 2026</p>
+    <div class="what">
+      <p class="org">NASA Johnson Space Center, through CACI</p>
+      <p class="title">Software Engineering Intern · Houston, TX</p>
+      <p class="sum">Built Procedure Representation Language file upload for TIDE, the mission control application that translates telemetry commands to spacecraft for the Moon Base Program, ISS, and Space Reactor-1. Merged four or more pull requests through a safety-critical CI/CD pipeline with static analysis, 100% test coverage, and formal code review on every change.</p>
+    </div>
+  </div>
+  <div class="role">
+    <p class="when">May – Aug 2025</p>
+    <div class="what">
+      <p class="org">NCR Atleos</p>
+      <p class="title">Software Engineering Intern · Frisco, TX</p>
+      <p class="sum">Built Blazor Server dashboards over Microsoft SQL Server for operational metrics and system health, cutting report turnaround from two hours to two minutes. Optimized stored procedures and automated PDF and DOCX generation, removing 40 hours a week of manual assembly. First place in the Frisco site hackathon, top 25 globally of 1,000+ teams.</p>
+    </div>
+  </div>
+  <div class="role">
+    <p class="when">Jun – Aug 2024</p>
+    <div class="what">
+      <p class="org">Citibank</p>
+      <p class="title">Software Engineering Intern · Irving, TX</p>
+      <p class="sum">Built a full-stack internal web app in Java and Angular that auto-populates merchant registration data, removing manual entry from onboarding. Shipped Angular screens integrated with backend REST services in a team Git workflow.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-head">
+    <p class="eyebrow">Skills and background</p>
+    <h2>What I work with</h2>
+  </div>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Area</th><th>Detail</th></tr>
+    <tr><td>Languages</td><td>Python, C/C++, Java, TypeScript/JavaScript, SQL, Swift</td></tr>
+    <tr><td>Systems and cloud</td><td>PostgreSQL, Microsoft SQL Server, Firebase/Firestore, Fly.io, Linux, CI/CD, REST APIs, Git</td></tr>
+    <tr><td>Operations</td><td>Metrics, structured logging, dashboards, alerting, incident response, zero-downtime deployments</td></tr>
+    <tr><td>Frameworks and AI tooling</td><td>Node.js/Express, React Native, React, Angular, Blazor Server, RAG pipelines, hybrid retrieval (vector and BM25), Model Context Protocol, LLM APIs, Playwright</td></tr>
+    <tr><td>Coursework</td><td>Operating Systems, Computer Architecture, Algorithms and Complexity, Data Structures, Software Engineering, Machine Learning, Geospatial AI, Agentic Software Engineering, iOS Mobile Computing, Discrete Math</td></tr>
+    <tr><td>Education</td><td>B.S. Computer Science, The University of Texas at Austin, Aug 2023 – May 2027</td></tr>
+  </table>
+  </div>
+  <div class="grid2">
+    <div class="card"><h3>Leadership</h3><p>Texas Luminescence technical build team, 2024 to present. Women in Computer Science at UT Austin, leading workshop meetings and mentoring underclassmen and high-school students, 2023 to present.</p></div>
+    <div class="card"><h3>Teaching and programs</h3><p>UT Austin CS Summer Academies program assistant, 2022 to 2023, mentoring 200+ high-school students per summer in C++. Capital One Tech Summit, January 2025, one of 39 students selected nationally.</p></div>
+  </div>
+</section>
+
+<section id="hangman">
+  <div class="section-head">
+    <p class="eyebrow">Featured project</p>
+    <h2>Evil Hangman engine</h2>
+    <div class="meta">
+      <span class="pill strong">Java</span>
+      <span class="pill">Hash maps and sets</span>
+      <span class="pill">Comparators</span>
+      <span class="pill">Complexity analysis</span>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p><b>What it is.</b> A hangman opponent that never commits to a word. It keeps every dictionary word of the chosen length, and on each guess it groups the candidates by the board they would produce, then keeps the largest group. The player loses a life only relative to the family the engine just chose. The engine is one 370-line class, HangmanManager, that owns the dictionary, the live candidate set, the board pattern, and the guess budget.</p>
+    <p><b>My role.</b> The public method signatures and the family-selection rules were fixed by the assignment. Every data structure, loop, helper, and tie-break implementation was mine. The console driver and replay-based test harness were provided by the course and are not part of what I present as my work.</p>
+  </div>
+
+  <h3>Worked example</h3>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Pattern after guessing E</th><th>Words</th><th class="num">Size</th></tr>
+    <tr><td style="font-family:var(--mono)">- - - -</td><td>ALLY, COOL</td><td class="num">2</td></tr>
+    <tr><td style="font-family:var(--mono)">- E - -</td><td>BETA</td><td class="num">1</td></tr>
+    <tr><td style="font-family:var(--mono)">- - E -</td><td>DEAL</td><td class="num">1</td></tr>
+    <tr><td style="font-family:var(--mono)">E - - E</td><td>ELSE</td><td class="num">1</td></tr>
+  </table>
+  </div>
+  <p class="callout">The engine keeps the family of two, reports “no E,” and the player loses a guess. Three candidates are gone and the player learned nothing. The pattern string is both what the player sees and the key that names the family, so the whole algorithm is one hash map.</p>
+
+  <h3>Design decisions and their costs</h3>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Choice</th><th>Alternative</th><th>Why</th><th>Cost</th></tr>
+    <tr><td>HashSet for candidates</td><td>ArrayList</td><td>Deduplicates the dictionary and keeps the caller’s collection isolated</td><td>No index access; iteration order is unspecified</td></tr>
+    <tr><td>HashMap for families</td><td>TreeMap</td><td>O(1) bucket per word in the one loop that touches every candidate</td><td>A second, sorted map is built for the caller</td></tr>
+    <tr><td>TreeMap returned</td><td>HashMap</td><td>Deterministic order makes expected outputs stable for testing</td><td>O(F log F · L) inserts; F is small</td></tr>
+    <tr><td>Full sort of families</td><td>One pass for top two</td><td>Nine lines, obviously correct, reuses the comparator</td><td>O(F log F) where O(F) would do</td></tr>
+    <tr><td>Rebuild set each guess</td><td>Remove losers in place</td><td>The winning family is already a list; one copy is simpler than N removals</td><td>One allocation per guess; size only shrinks</td></tr>
+  </table>
+  </div>
+
+  <h3>Cost of one guess</h3>
+  <div class="prose">
+    <p>With N live candidates, word length L, and F distinct families this guess, partitioning is <b>O(N · L)</b>: one L-character pattern per word, hashed in O(L). Sorting families is O(F log F · L), and F is bounded by min(N, 2^L), a handful in practice. N only shrinks, so the first guess is the worst and a round is O(26 · N₀ · L). On the course dictionary of 45,347 words the largest N₀ is 7,358 eight-letter words, which puts the worst first guess near 59,000 character operations. That is why I chose readable structures over caching at this scale, and I can say where the decision flips.</p>
+  </div>
+
+  <h3>The tie-break</h3>
+  <pre><span class="k">public int</span> compareTo(CompareClass o) {
+    <span class="k">if</span> (length != o.length) <span class="k">return</span> o.length - length;   <span class="c">// larger family first</span>
+    <span class="k">int</span> a = numCharsRevealed(pattern), b = numCharsRevealed(o.pattern);
+    <span class="k">if</span> (a != b) <span class="k">return</span> a - b;                            <span class="c">// fewer revealed letters first</span>
+    <span class="k">return</span> pattern.compareTo(o.pattern);                 <span class="c">// then alphabetical, for determinism</span>
+}</pre>
+  <div class="prose">
+    <p>Equal-size families leave the player the same number of words to rule out, but the one with fewer revealed letters hides more about positions, so it sorts first. Subtraction for ordering can overflow in general. Family sizes here are bounded by the dictionary, so it cannot.</p>
+  </div>
+
+  <h3>What I found on re-review</h3>
+  <ul>
+    <li><b>A precondition that never fires.</b> The constructor checked <span style="font-family:var(--mono)">words == null &amp;&amp; words.size() &gt; 0</span>. A null set throws a NullPointerException on the second operand, and a non-null empty set passes. The intended condition is an “or” with an empty check. It survived because the provided harness only ever passed a valid dictionary.</li>
+    <li><b>A “random” secret word that is the first element.</b> The result is still consistent with every guess, so the game is correct, but the documented behaviour is not met.</li>
+    <li><b>An error message that contradicts its own check.</b> The guard was right; the text said the opposite.</li>
+  </ul>
+  <p class="callout">The lesson I took: the happy path never exercises a precondition, so precondition checks need tests of their own.</p>
+
+  <div class="grid2">
+    <div class="card"><h3>What I would add next</h3><p>Unit tests on a five-word dictionary with every family computed by hand. An automated player with two letter-selection strategies, compared by win rate over the full dictionary. Then measure, replace string concatenation with a char array, and measure again.</p></div>
+    <div class="card"><h3>Code availability</h3><p>This is a course assignment, so the full solution is not posted publicly. I walk through the source live in interviews and can share it on request.</p></div>
+  </div>
+</section>
+
+<section id="resume">
+  <div class="section-head">
+    <p class="eyebrow">Resume</p>
+    <h2>Resume</h2>
+  </div>
+  <div class="sheet"><img src="resume-page-1.png" alt="Praveena Arni resume: education at UT Austin, skills, and software engineering internships at NASA Johnson Space Center, NCR Atleos, and Citibank" width="1360" height="1760"></div>
+</section>
+
+<footer>Last updated October 2026 · Praveena Arni</footer>
+
+</div>
+</body>
+</html>
